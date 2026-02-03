@@ -11,9 +11,9 @@ module.exports = {
       watch: false,
       max_memory_restart: '500M',
       env: {
-        PORT: 5000,
+        PORT: 8089,
         DB_HOST: '10.0.0.4',
-        DB_PORT: 5432,
+        DB_PORT: 5000,
         DB_USER: 'xdialcore',
         DB_PASSWORD: 'xdialcore',
         DB_NAME: 'xdialcore',
