@@ -22,7 +22,7 @@ jobs:
             cd /root/voice_resolver
             
             # Switch to SSH URL
-            git remote set-url origin git@github.com:pjmilkymommyveeve/xdialcoreapi.git
+            git remote set-url origin git@github.com:pjmilkymommyveeve/voice_resolver.git
             
             # Pull latest changes
             GIT_SSH_COMMAND="ssh -i /root/.ssh/remoterepo -o StrictHostKeyChecking=no" git pull origin master
