@@ -1,0 +1,34 @@
+name: Deploy voiceresolver
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Servers
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: root
+          key: ${{ secrets.DEPLOYMENT_KEY }}
+          port: 22
+          timeout: 30s
+          command_timeout: 10m
+          script: |
+            cd /root/voice_resolver
+            
+            # Switch to SSH URL
+            git remote set-url origin git@github.com:pjmilkymommyveeve/xdialcoreapi.git
+            
+            # Pull latest changes
+            GIT_SSH_COMMAND="ssh -i /root/.ssh/remoterepo -o StrictHostKeyChecking=no" git pull origin master
+            
+            # Reload with PM2
+            pm2 startOrReload ecosystem.config.js
+            pm2 save
+
+            

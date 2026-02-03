@@ -11,7 +11,7 @@ module.exports = {
       watch: false,
       max_memory_restart: '500M',
       env: {
-        PORT: 8081,
+        PORT: 8089,
         DB_HOST: 'localhost',
         DB_PORT: 5432,
         DB_USER: 'xdialcore',
